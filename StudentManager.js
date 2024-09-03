@@ -18,6 +18,15 @@ class StudentManager {
     this.students = [];
     await this.saveStudents();
   }
+  async updateStudent(student) {
+    const index = this.students.findIndex((s) => s.id === student.id);
+    if (index !== -1) {
+      this.students[index] = student;
+      await this.saveStudents();
+    } else {
+      console.log("Student not found");
+    }
+  }
   async getStudents() {
     return this.students;
   }
